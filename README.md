@@ -32,9 +32,9 @@ The objective of this project is to:
 
 ### Device Placement
 
-- Windows 10 → VLAN 10
-- Kali Linux → VLAN 10
-- Domain Controller → VLAN 20
+- Windows 10 (CLient Machine) → VLAN 10
+- Kali Linux (Attacker Machine) → VLAN 10
+- Windows Server 2022 (Domain Controller) → VLAN 20
 - pfSense → Default Gateway for all VLANs
 
 ---
