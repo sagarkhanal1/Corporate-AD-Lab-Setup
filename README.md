@@ -27,6 +27,9 @@ Designed for Red Team and Blue Team practice.
   - Internal Network (intnet)
 - DHCP disabled
 - DHCP Relay enabled
+<img src="https://i.imgur.com/woiJKH4.png" height="80%" width="80%" alt="pfsense"/>
+<img src="https://i.imgur.com/X9M5e6q.png" height="80%" width="80%" alt="DHCP Relay Config"/>
+
 
 ### 🖥️ Domain Controller
 - Windows Server 2022
@@ -36,15 +39,21 @@ Designed for Red Team and Blue Team practice.
   - DHCP
 - Static IP
 - Handles authentication & IP assignment
+<img src="https://i.imgur.com/COLtBTy.png" height="80%" width="80%" alt="DC"/>
+<img src="https://i.imgur.com/QLhynrO.png" height="80%" width="80%" alt="AD Users and Computers"/>
+<img src="https://i.imgur.com/zu0WKdh.png" height="80%" width="80%" alt="DHCP Config"/>
+
 
 ### 👤 Client Machine
 - Windows 10
 - Domain joined
 - Receives IP via DHCP relay
+<img src="https://i.imgur.com/ZZTkRci.png" height="80%" width="80%" alt="Domain Login From a Client Machine"/>
 
 ### 🐉 Attacker Machine
 - Kali Linux
 - Used for internal penetration testing
+<img src="https://i.imgur.com/On1Kdlw.png" height="80%" width="80%" alt="Kali"/>
 
 ---
 
