@@ -1,89 +1,125 @@
-# Routing, Firewall and VLAN Segmentation with pfSense
+# 🛡️ Corporate Active Directory Cybersecurity Lab
 
-## 📌 Project Overview
-
-This project demonstrates the implementation of enterprise-style network segmentation using pfSense in a virtual lab environment.
-
-The lab includes:
-- pfSense Firewall
-- Windows Server 2022 (Domain Controller)
-- Windows 10 Client
-- Kali Linux (Attacker Machine)
-
-The objective of this project is to:
-
-- Implement VLAN-based network segmentation
-- Configure inter-VLAN routing
-- Apply firewall rules to restrict lateral movement
-- Configure NAT for internet access
-- Validate segmentation through testing
-- Analyze firewall logs for SOC monitoring scenarios
+A fully virtualized corporate-style lab environment built in VirtualBox for practicing Active Directory attacks, network security, and defensive monitoring.
 
 ---
 
-## 🏗 Lab Architecture
+## 📌 Lab Overview
 
-### Network Design
+This lab simulates a small corporate network with:
 
-| VLAN | Purpose | Subnet |
-|------|---------|--------|
-| VLAN 10 | User Network | 192.168.10.0/24 |
-| VLAN 20 | Server Network | 192.168.20.0/24 |
+- Firewall segmentation
+- Active Directory Domain Controller
+- Domain-joined Windows client
+- Attacker machine
+- DHCP relay architecture
 
-### Device Placement
-
-- Windows 10 (CLient Machine) → VLAN 10
-- Kali Linux (Attacker Machine) → VLAN 10
-- Windows Server 2022 (Domain Controller) → VLAN 20
-- pfSense → Default Gateway for all VLANs
+Designed for Red Team and Blue Team practice.
 
 ---
 
-## 🔧 Technologies Used
+## 🏗️ Infrastructure
 
-- pfSense Firewall
+### 🔥 Firewall
+- pfSense
+- 2 NICs:
+  - NAT (Internet access)
+  - Internal Network (intnet)
+- DHCP disabled
+- DHCP Relay enabled
+
+### 🖥️ Domain Controller
 - Windows Server 2022
-- Active Directory Domain Services
+- Roles:
+  - AD DS
+  - DNS
+  - DHCP
+- Static IP
+- Handles authentication & IP assignment
+
+### 👤 Client Machine
 - Windows 10
+- Domain joined
+- Receives IP via DHCP relay
+
+### 🐉 Attacker Machine
 - Kali Linux
-- VirtualBox
+- Used for internal penetration testing
 
 ---
 
-## 🔐 Security Controls Implemented
+## 🌐 Network Design
 
-- Inter-VLAN firewall restrictions
-- Controlled AD port access (Kerberos, LDAP, SMB, DNS)
-- Blocked unnecessary lateral movement
-- NAT configuration for outbound traffic
-- Firewall logging enabled
-
----
-
-## 🧪 Validation & Testing
-
-- Verified domain join across VLANs
-- Tested blocked traffic between user and server VLAN
-- Simulated lateral movement attempts from Kali
-- Analyzed pfSense firewall logs
+| Machine | Interface | Purpose |
+|----------|------------|----------|
+| pfSense | NAT + intnet | Firewall & Gateway |
+| DC | intnet | AD, DNS, DHCP |
+| Win10 | intnet | User workstation |
+| Kali | intnet | Internal attacker |
 
 ---
 
-## 🎯 Skills Demonstrated
+## 🔐 Security Concepts Practiced
 
 - Network segmentation
-- Firewall configuration
-- VLAN setup
-- Active Directory integration
-- SOC-relevant log analysis
-- Enterprise-style network architecture
+- DHCP relay architecture
+- Active Directory management
+- AD attack simulation
+- Log monitoring & detection
+- Lateral movement testing
 
 ---
 
-## 📈 Future Improvements
+## 🔴 Red Team Modules
 
-- Add IDS/IPS (Snort or Suricata)
-- Integrate Wazuh for centralized logging
-- Simulate privilege escalation attacks
-- Implement Zero Trust model
+- AD Enumeration
+- SMB & LDAP discovery
+- Kerberoasting
+- AS-REP Roasting
+- Pass-the-Hash
+- Lateral Movement
+- RDP brute force simulation
+
+
+---
+
+## 🔵 Blue Team Modules
+
+- Windows Event Logs
+- Sysmon configuration
+- Brute-force detection
+- Firewall log analysis
+- Attack detection scenarios
+
+
+---
+
+## 🛠️ Tools Used
+
+- VirtualBox
+- pfSense
+- Windows Server 2022
+- Windows 10
+- Kali Linux
+
+---
+
+## 🎯 Purpose
+
+This lab is built to:
+
+- Simulate real-world corporate AD environment
+- Practice offensive security techniques safely
+- Build defensive monitoring capabilities
+- Prepare for certifications (eJPT, PNPT, OSCP, Security+)
+
+---
+
+## 🚀 Future Improvements
+
+- VLAN segmentation
+- DMZ implementation
+- IDS/IPS integration
+- SIEM deployment
+- Automated attack scripts
 
